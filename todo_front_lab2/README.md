@@ -11,5 +11,5 @@ npm install node-sass@4.14.1
 Запускаем примитивный бек для отдачи json
 
 ```
-json-server ./src/assets/db.json --port:3001
+json-server ./src/assets/db.json --port 3001
 ```
