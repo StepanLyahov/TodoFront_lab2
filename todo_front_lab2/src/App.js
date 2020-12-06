@@ -90,11 +90,9 @@ function App() {
             return list;
         });
         setLists(newList);
-        axios
-            // .patch('http://localhost:3001/tasks/' + taskId, {
-            .post('http://localhost:8080/api/v1/task/update/' + taskId, {
-                completed
-            })
+        axios.post('http://localhost:8080/api/v1/task/update/' + taskId, {
+            completed
+        })
             .catch(() => {
                 alert('Не удалось обновить задачу');
             });

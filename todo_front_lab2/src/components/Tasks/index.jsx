@@ -23,8 +23,8 @@ const Tasks = ({
         if (newTitle) {
             onEditTitle(list.id, newTitle);
             axios
-                .patch('http://localhost:3001/lists/' + list.id, {
-                    name: newTitle
+                .post('http://localhost:8080/api/v1/lists/update/' + list.id, {
+                    list
                 })
                 .catch(() => {
                     alert('Не удалось обновить название списка');
