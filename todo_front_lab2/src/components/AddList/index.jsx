@@ -32,8 +32,7 @@ const AddList = ({colors, onAdd}) => {
             return;
         }
         setIsLoading(true);
-        axios
-            .post('http://localhost:3001/lists', {
+        axios.post('http://localhost:8080/api/v1/lists/add', {
                 name: inputValue,
                 colorId: seletedColor
             })

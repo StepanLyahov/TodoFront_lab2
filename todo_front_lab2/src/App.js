@@ -11,12 +11,11 @@ function App() {
     let history = useHistory();
 
     useEffect(() => {
-        axios
-            .get('http://localhost:3001/lists?_expand=color&_embed=tasks')
+        axios.get('http://localhost:8080/api/v1/lists/getAll')
             .then(({data}) => {
                 setLists(data);
             });
-        axios.get('http://localhost:3001/colors').then(({data}) => {
+        axios.get('http://localhost:8080/api/v1/color/getAll').then(({data}) => {
             setColors(data);
         });
     }, []);
@@ -55,8 +54,7 @@ function App() {
             return list;
         });
         setLists(newList);
-        axios
-            .patch('http://localhost:3001/tasks/' + taskObj.id, {
+        axios.post('http://localhost:8080/api/v1/task/update/' + taskObj.id, {
                 text: newTaskText
             })
             .catch(() => {
@@ -73,7 +71,7 @@ function App() {
                 return item;
             });
             setLists(newList);
-            axios.delete('http://localhost:3001/tasks/' + taskId).catch(() => {
+            axios.post('http://localhost:8080/api/v1/task/delete/' + taskId).catch(() => {
                 alert('Не удалось удалить задачу');
             });
         }
@@ -93,7 +91,8 @@ function App() {
         });
         setLists(newList);
         axios
-            .patch('http://localhost:3001/tasks/' + taskId, {
+            // .patch('http://localhost:3001/tasks/' + taskId, {
+            .post('http://localhost:8080/api/v1/task/update/' + taskId, {
                 completed
             })
             .catch(() => {

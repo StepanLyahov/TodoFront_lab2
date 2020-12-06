@@ -20,8 +20,7 @@ const AddTaskForm = ({list, onAddTask}) => {
             completed: false
         };
         setIsLoading(true);
-        axios
-            .post('http://localhost:3001/tasks', obj)
+        axios.post('http://localhost:8080/api/v1/task/add', obj)
             .then(({data}) => {
                 onAddTask(list.id, data);
                 toggleFormVisible();
